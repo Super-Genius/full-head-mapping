@@ -1,0 +1,41 @@
+name: Build arXiv-style paper
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/full_head_mapping.tex'
+      - 'docs/references.bib'
+      - 'docs/make_figures.py'
+      - 'docs/build_paper.sh'
+      - '.github/workflows/build-paper.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install figure dependencies
+        run: pip install numpy matplotlib scipy
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+      - name: Build paper and figures
+        run: ./docs/build_paper.sh
+      - name: Commit generated paper assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/full_head_mapping.pdf docs/figures/*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Build paper PDF and figures"
+            git push
+          fi

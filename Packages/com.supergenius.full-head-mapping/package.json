@@ -1,0 +1,12 @@
+{
+  "name": "com.supergenius.full-head-mapping",
+  "displayName": "Super-Genius Full Head Mapping",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Multi-view photographic texture projection and multiband blending for UV-mapped head meshes, inspired by Kenneth Hurley's early-2000s Full Head Mapping tool.",
+  "author": {
+    "name": "Kenneth Hurley",
+    "url": "https://github.com/Super-Genius"
+  },
+  "keywords": ["head", "face", "texture", "projection", "photogrammetry", "multiband", "blending", "unity"]
+}

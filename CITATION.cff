@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Full Head Mapping Revisited"
+message: "If you use this software or its reconstruction methodology, please cite the accompanying technical report."
+type: software
+authors:
+  - family-names: Hurley
+    given-names: Kenneth
+repository-code: "https://github.com/Super-Genius/full-head-mapping"
+license: MIT
+version: 0.1.0
+date-released: 2026-09-27
